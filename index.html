@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometric Layered Pookkalam</title>
+    <style>
+        /* Dark brown background to match your specification */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #80d185;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: sans-serif;
+            overflow: hidden;
+        }
+
+        /* Central fixed coordinate canvas anchoring all concentric vectors */
+        .pookalam-canvas {
+            position: relative;
+            width: 540px;
+            height: 540px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.6));
+        }
+
+        /* Universal circular structural positioning rule */
+        .layer {
+            position: absolute;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* LAYER 1: Golden Yellow Outer Circle */
+        .outer-golden {
+            width: 460px;
+            height: 460px;
+            background-color: #f7cc00;
+            z-index: 1;
+        }
+
+        /* LAYER 2: Dark Green Circle */
+        .dark-green-ring {
+            width: 430px;
+            height: 430px;
+            background-color: #054a1f;
+            z-index: 2;
+        }
+
+        /* BASE COORDINATE CENTER FOR RADIAL ELEMENTS */
+        .radial-base {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+        }
+
+        /* WIDE EYELID SHAPE VECTOR */
+        /* Corner pinched curves aligned vertically straight upwards */
+        .eyelid-petal {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            border-radius: 0% 100% 0% 100%;
+            transform: translateX(-50%) rotate(45deg);
+        }
+
+        /* LAYER 3: 18 Dark Red Petals (20-degree increments) */
+        .red-array {
+            transform: rotate(calc(var(--i) * 20deg));
+            z-index: 3;
+        }
+        .red-array .eyelid-petal {
+            width: 84px;
+            height: 84px;
+            background: linear-gradient(135deg, #cc1010, #7a0303);
+            bottom: 112px;
+            box-shadow: inset -2px 2px 6px rgba(0,0,0,0.3);
+        }
+
+        /* LAYER 4: 18 Orange Petals (Gap-fillers shifted by exactly +10 degrees) */
+        .orange-array {
+            transform: rotate(calc((var(--i) * 20deg) + 10deg));
+            z-index: 4;
+        }
+        .orange-array .eyelid-petal {
+            width: 78px;
+            height: 78px;
+            background: linear-gradient(135deg, #f2661f, #c43902);
+            bottom: 106px;
+        }
+
+        /* LAYER 5: Yellow Circle */
+        .mid-yellow-circle {
+            width: 300px;
+            height: 300px;
+            background-color: #fcae05;
+            z-index: 5;
+        }
+
+        /* LAYER 6: Orange Circle */
+        .mid-orange-circle {
+            width: 260px;
+            height: 260px;
+            background-color: #e65c00;
+            z-index: 6;
+        }
+
+        /* LAYER 7: Dark Red Circle */
+        .inner-dark-red {
+            width: 220px;
+            height: 220px;
+            background-color: #8c0303;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.3);
+            z-index: 7;
+        }
+
+        /* LAYER 8: Filled Square Pattern */
+        /* Interlocking squares rotated at 45-degree intervals to generate a structural geometric grid */
+        .square-pattern-wrap {
+            transform: rotate(calc(var(--i) * 45deg));
+            z-index: 8;
+        }
+        .filled-square {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background-color: #ff9900;
+            transform: translate(-50%, -50%);
+            border: 2px solid #ffffff;
+            box-shadow: 0 0 8px rgba(0,0,0,0.2);
+        }
+
+        /* LAYER 9: Central Dark Green Circle */
+        .center-green-circle {
+            width: 130px;
+            height: 130px;
+            background-color: #03421a;
+            z-index: 9;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        /* LAYER 10: Geometric Star Shaped White (8-pointed geometric array) */
+        .star-array {
+            transform: rotate(calc(var(--i) * 45deg));
+            z-index: 10;
+        }
+        .star-point {
+            position: absolute;
+            width: 27px;
+            height: 59px;
+            /* Generates a clean sharp diamond vector point stretching outwards */
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            background: linear-gradient(to top, #e6e6e6, #ffffff);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* LAYER 11: Dark Purple Circle Dot Core */
+        .center-purple-dot {
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle, #7b1fa2, #4a0072);
+            border: 2px solid #ffffff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            z-index: 11; /* Highest priority hierarchy overrides all backgrounds */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="pookalam-canvas">
+        
+        <!-- 1. Golden Yellow Outer Circle -->
+        <div class="layer outer-golden"></div>
+
+        <!-- 2. Dark Green Circle -->
+        <div class="layer dark-green-ring"></div>
+
+        <!-- 3. 18 Dark Red Eyelid Shaped Petals -->
+        <div class="radial-base red-array" style="--i:1;"><div class="eyelid-petal"></div></div>
+        <div class="radial-base red-array" style="--i:2;"><div class="eyelid-petal"></div></div>
+        <div class="radial-base red-array" style="--i:3;"><div class="eyelid-petal"></div></div>
+        <div class="radial-base red-array" style="--i:4;"><div class="eyelid-petal"></div></div>
+        <div class="radial-base red-array" style="--i:5;"><div class="eyelid-petal"></div></div>
+        <div class="radial-base red-array" style="--i:6;"><div class="eyelid-petal"></div></div>
+        <div class="radial-base red-array" style="--i:7;"><div class="eyelid-petal"></div></div>
+        <div class="radial-base red-array" style="--i:8;"><div class="eyelid-petal"></div></div>
+        <div class="radial-base red-array" style="--i:9;"><div class="eyelid-petal"></div></div>
+        <div class="radial-base red-array" style="--i:10;"><div class="eyelid-petal"></div></div>
+        <div class="radial-base red-array" style="--i:11;"><div class="eyelid-petal"></div></div>
+        <div class="radial-base red-array" style="--i:12;"><div class="eyelid-petal"></div></div>
+        <div class="radial-base red-array" style="--i:13;"><div class="eyelid-petal"></div></div>
+        <div class="radial-base red-array" style="--i:14;"><div class="eyelid-petal"></div></div>
+        <div class="radial-base red-array" style="--i:15;"><div class="eyelid-petal"></div></div>
+        <div class="radial-base red-array" style="--i:16;"><div class="eyelid-petal"></div></div>
+        <div class="radial-base red-array" style="--i:17;"><div class="eyelid-petal"></div></div>
+        <div class="radial-base red-array" style="--i:18;"><div class="eyelid-petal"></div></div>
+
+        <!-- 4. 18 Orange Petals (Interlocking Gap Fillers) -->
+        <div class="radial-base orange-array" style="--i:1;"><div class="eyelid-petal"></div></div>
+        <div class="radial-base orange-array" style="--i:2;"><div class="eyelid-petal"></div></div>
+        <div class="radial-base orange-array" style="--i:3;"><div class="eyelid-petal"></div></div>
+        <div class="radial-base orange-array" style="--i:4;"><div class="eyelid-petal"></div></div>
+        <div class="radial-base orange-array" style="--i:5;"><div class="eyelid-petal"></div></div>
+        <div class="radial-base orange-array" style="--i:6;"><div class="eyelid-petal"></div></div>
+        <div class="radial-base orange-array" style="--i:7;"><div class="eyelid-petal"></div></div>
+        <div class="radial-base orange-array" style="--i:8;"><div class="eyelid-petal"></div></div>
+        <div class="radial-base orange-array" style="--i:9;"><div class="wide-eyelid-petal"></div> <div class="eyelid-petal"></div></div>
+        <div class="radial-base orange-array" style="--i:10;"><div class="eyelid-petal"></div></div>
+        <div class="radial-base orange-array" style="--i:11;"><div class="eyelid-petal"></div></div>
+        <div class="radial-base orange-array" style="--i:12;"><div class="eyelid-petal"></div></div>
+        <div class="radial-base orange-array" style="--i:13;"><div class="eyelid-petal"></div></div>
+        <div class="radial-base orange-array" style="--i:14;"><div class="eyelid-petal"></div></div>
+        <div class="radial-base orange-array" style="--i:15;"><div class="eyelid-petal"></div></div>
+        <div class="radial-base orange-array" style="--i:16;"><div class="eyelid-petal"></div></div>
+        <div class="radial-base orange-array" style="--i:17;"><div class="eyelid-petal"></div></div>
+        <div class="radial-base orange-array" style="--i:18;"><div class="eyelid-petal"></div></div>
+
+        <!-- 5. Yellow Circle -->
+        <div class="layer mid-yellow-circle"></div>
+
+        <!-- 6. Orange Circle -->
+        <div class="layer mid-orange-circle"></div>
+
+        <!-- 7. Dark Red Circle -->
+        <div class="layer inner-dark-red"></div>
+
+        <!-- 8. Filled Square Pattern (Layered geometric matrices) -->
+        <div class="radial-base square-pattern-wrap" style="--i:1;"><div class="filled-square"></div></div>
+        <div class="radial-base square-pattern-wrap" style="--i:2;"><div class="filled-square"></div></div>
+
+        <!-- 9. Central Dark Green Circle -->
+        <div class='layer center-green-circle'></div>
+
+        <!-- 10. Geometric Star Shaped White (8-pointed geometric array) -->
+        <div class='layer star-array' style='--i:1;'><div class='star-point'></div></div>
+        <div class='layer star-array' style='--i:2;'><div class='star-point'></div></div>
+        <div class='layer star-array' style='--i:3;'><div class='star-point'></div></div>
+        <div class='layer star-array' style='--i:4;'><div class='star-point'></div></div>
+        <div class='layer star-array' style='--i:5;'><div class='star-point'></div></div>
+        <div class='layer star-array' style='--i:6;'><div class='star-point'></div></div>
+        <div class='layer star-array' style='--i:7;'><div class='star-point'></div></div>
+        <div class='layer star-array' style='--i:8;'><div class='star-point'></div></div>
+      
+        <!-- 11. Dark Purple Circle Dot Core -->
+        <div class='layer center-purple-dot'></div>
