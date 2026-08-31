@@ -1,3 +1,33 @@
+# 🌸 [Gowri Shaji]'s Pookalam 2026 🌸
+
+## 👨‍💻 About Me
+- **Name:** [Gowri Shaji]
+- **Branch:** [CS 1]
+- **Semester:** [First semester]
+- **Contact Number:** [6282921259]
+- **Programming Language Used:** [html]
+
+## 🎨 My Pookalam
+
+### Description
+[This is a vibrant, circular digital Pookalam design featuring layered geometric and floral elements set against a solid light green background.]
+
+### Preview
+![My Pookalam](output/pookalam-preview.png)
+*Add more images if you have multiple views or animations*
+
+### Features
+- [Feature 1 - e.g., "Colorful geometric patterns"]
+- [Feature 2 - e.g., "Interactive floral elements"]
+
+## 🚀 How to Run
+
+### Prerequisites
+[List any requirements, libraries,  software needed]
+py
+# open index.html
+
+
 <img width="2560" height="1440" alt="IMG-20260823-WA0015" src="https://github.com/user-attachments/assets/efd07a05-3f93-48d1-b278-52713389fd07" />
 
 
