@@ -12,9 +12,6 @@
 ### Description
 [This is a vibrant, circular digital Pookalam design featuring layered geometric and floral elements set against a solid light green background.]
 
-### Preview
-![My Pookalam](output/pookalam-preview.png)
-*Add more images if you have multiple views or animations*
 
 ### Features
 - [Feature 1 - e.g., "Colorful geometric patterns"]
